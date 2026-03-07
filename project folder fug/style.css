@@ -1,0 +1,267 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  background: #fff;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hero Section */
+.hero-div {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 2s ease-in;
+  z-index: 1;
+  position: relative;
+}
+.hero-logo {
+  max-width: 90%;
+  border-radius: 2rem;
+  transition: transform 0.3s ease;
+}
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Lore Section */
+.lore {
+  margin: 4rem 2rem;
+  padding: 2rem;
+  border-radius: 12px;
+  background: #f0f0f0;
+  text-align: center;
+  width: 80%;
+  line-height: 1.6;
+  position: relative;
+  z-index: 10; /* Ensure buttons are on top */
+}
+.lore h2 {
+  color: #5EC44A;
+  margin-bottom: 1rem;
+}
+.lore-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 10; /* Above meme gallery */
+}
+.copy, .buy-now {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 44px; /* mobile-friendly touch size */
+  touch-action: manipulation; /* improves tap responsiveness */
+}
+.copy {
+  background: #5EC44A;
+  color: #fff;
+}
+.copy:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #5EC44A;
+}
+.buy-now {
+  background: #111;
+  color: #fff;
+}
+.buy-now:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #111;
+}
+
+/* Moving Text */
+.moving-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.moving-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #5EC44A;
+  display: inline-block;
+  animation: slide 6s infinite alternate linear;
+  white-space: nowrap;
+}
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Meme Gallery */
+.fug-meme {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  z-index: 1; /* Ensure it's below buttons */
+}
+.fug-meme img, .fug-meme video {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.fug-meme img:hover, .fug-meme video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(94, 196, 74, 0.5);
+}
+
+/* Mobile Carousel */
+@media (max-width: 768px) {
+  .fug-meme {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fug-meme img, .fug-meme video {
+    min-width: 80%;
+    scroll-snap-align: start;
+  }
+}
+
+/* Whac-A-Mole Game */
+.whac-a-mole {
+  margin: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+.whac-a-mole h2 {
+  color: #5EC44A;
+}
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.game-board img {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+.game-board img:active {
+  transform: scale(0.9);
+}
+
+/* Final Lore Section */
+.final-lore {
+  margin: 2rem 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #f0f0f0;
+  text-align: center;
+  line-height: 1.6;
+}
+.final-lore h2 {
+  color: #5EC44A;
+  margin-bottom: 1rem;
+}
+.final-lore .highlight {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #5EC44A;
+  font-weight: bold;
+}
+
+/* Social Links */
+.socials {
+  padding: 2rem;
+  text-align: center;
+}
+.socials h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #5EC44A;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.social-icons img {
+  width: 50px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 1rem;
+  margin-top: auto;
+  width: 100%;
+  animation: pulse 3s infinite ease-in-out;
+}
+.footer .disclaimer {
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(94, 196, 74, 0.7); }
+  50% { box-shadow: 0 0 25px 5px rgba(94, 196, 74, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(94, 196, 74, 0.7); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-div {
+    height: 50vh;
+  }
+  .final-lore, .lore {
+    width: 90%;
+  }
+  .game-board {
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+  }
+}
